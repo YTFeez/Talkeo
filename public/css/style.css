@@ -1,0 +1,259 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  background: #0a0e17;
+  color: #e8edf5;
+  overflow: hidden;
+}
+
+.screen {
+  width: 100vw;
+  height: 100vh;
+}
+
+.hidden {
+  display: none !important;
+}
+
+#auth-screen {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+  background: radial-gradient(circle at 20% 20%, #1a2744, #0a0e17 60%);
+}
+
+.auth-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 2rem;
+  width: 380px;
+  backdrop-filter: blur(12px);
+}
+
+.auth-card h1 {
+  font-size: 2rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #6ee7ff;
+}
+
+.subtitle {
+  color: #8b9cb8;
+  margin: 0.5rem 0 1.5rem;
+}
+
+.tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.tab {
+  flex: 1;
+  padding: 0.6rem;
+  border: none;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.06);
+  color: #c5d0e0;
+  cursor: pointer;
+}
+
+.tab.active {
+  background: #1d6fff;
+  color: white;
+}
+
+.auth-form label {
+  display: block;
+  font-size: 0.85rem;
+  color: #8b9cb8;
+  margin-bottom: 0.3rem;
+}
+
+.auth-form input {
+  width: 100%;
+  padding: 0.7rem;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.3);
+  color: white;
+}
+
+.auth-form button,
+#start-btn {
+  width: 100%;
+  padding: 0.8rem;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #1d6fff, #6ee7ff);
+  color: #04101f;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.error {
+  color: #ff6b6b;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+}
+
+.leaderboard-panel {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 1.5rem;
+  width: 280px;
+}
+
+.leaderboard-panel h2 {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  color: #6ee7ff;
+}
+
+#leaderboard-list {
+  list-style: none;
+}
+
+#leaderboard-list li {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.4rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  font-size: 0.9rem;
+}
+
+#game-screen {
+  position: relative;
+}
+
+#game-canvas {
+  display: block;
+  width: 100vw;
+  height: 100vh;
+}
+
+#hud {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.hud-top {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  font-weight: 600;
+}
+
+.crosshair {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.5rem;
+  color: rgba(255, 255, 255, 0.8);
+  text-shadow: 0 0 4px black;
+}
+
+.hud-bottom {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(420px, 90vw);
+  text-align: center;
+}
+
+#health-bar {
+  height: 10px;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 999px;
+  overflow: hidden;
+  margin-bottom: 0.8rem;
+}
+
+#health-fill {
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(90deg, #ff4d4d, #ffb347);
+  transition: width 0.15s;
+}
+
+#kill-feed {
+  font-size: 0.85rem;
+  color: #ffd166;
+  min-height: 1.2rem;
+}
+
+#scoreboard {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 1rem 1.5rem;
+  min-width: 260px;
+}
+
+#scoreboard h3 {
+  margin-bottom: 0.8rem;
+  color: #6ee7ff;
+}
+
+#scoreboard-list {
+  list-style: none;
+}
+
+#scoreboard-list li {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.35rem 0;
+  font-size: 0.9rem;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.65);
+  text-align: center;
+  gap: 1rem;
+}
+
+.overlay h2 {
+  font-size: 2rem;
+}
+
+.overlay p {
+  color: #aab4c8;
+  max-width: 520px;
+  line-height: 1.5;
+}
+
+#start-btn {
+  width: auto;
+  padding: 0.8rem 2rem;
+  pointer-events: auto;
+}
+
+@media (max-width: 768px) {
+  #auth-screen {
+    flex-direction: column;
+    padding: 1rem;
+    overflow-y: auto;
+  }
+}

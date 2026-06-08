@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arena FPS — Multijoueur</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div id="auth-screen" class="screen">
+    <div class="auth-card">
+      <h1>Arena FPS</h1>
+      <p class="subtitle">Combat multijoueur en temps réel</p>
+
+      <div class="tabs">
+        <button class="tab active" data-tab="login">Connexion</button>
+        <button class="tab" data-tab="register">Inscription</button>
+      </div>
+
+      <form id="login-form" class="auth-form">
+        <label>Pseudo</label>
+        <input type="text" name="username" required autocomplete="username">
+        <label>Mot de passe</label>
+        <input type="password" name="password" required autocomplete="current-password">
+        <button type="submit">Se connecter</button>
+      </form>
+
+      <form id="register-form" class="auth-form hidden">
+        <label>Pseudo</label>
+        <input type="text" name="username" required autocomplete="username">
+        <label>E-mail</label>
+        <input type="email" name="email" required autocomplete="email">
+        <label>Mot de passe</label>
+        <input type="password" name="password" required autocomplete="new-password">
+        <button type="submit">Créer un compte</button>
+      </form>
+
+      <p id="auth-error" class="error hidden"></p>
+    </div>
+
+    <div class="leaderboard-panel">
+      <h2>Classement</h2>
+      <ul id="leaderboard-list"></ul>
+    </div>
+  </div>
+
+  <div id="game-screen" class="screen hidden">
+    <canvas id="game-canvas"></canvas>
+
+    <div id="hud">
+      <div class="hud-top">
+        <span id="player-name"></span>
+        <span id="player-stats"></span>
+      </div>
+      <div class="crosshair">+</div>
+      <div class="hud-bottom">
+        <div id="health-bar"><div id="health-fill"></div></div>
+        <p id="kill-feed"></p>
+      </div>
+      <div id="scoreboard" class="hidden">
+        <h3>Joueurs en ligne</h3>
+        <ul id="scoreboard-list"></ul>
+      </div>
+    </div>
+
+    <div id="overlay" class="overlay">
+      <h2>Cliquez pour jouer</h2>
+      <p>ZQSD / WASD — se déplacer · Souris — viser · Clic gauche — tirer · Tab — score · Échap — menu</p>
+      <button id="start-btn">Entrer dans l'arène</button>
+    </div>
+
+    <div id="death-screen" class="overlay hidden">
+      <h2>Vous êtes éliminé</h2>
+      <p>Respawn dans quelques secondes...</p>
+    </div>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js"
+      }
+    }
+  </script>
+  <script type="module" src="/js/main.js"></script>
+</body>
+</html>
